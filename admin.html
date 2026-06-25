@@ -1,88 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Admin - VOID</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | VOID</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body data-page="admin">
 
-<body>
+  <header class="header">
+    <a href="index.html" class="logo">VOID</a>
 
-<header class="navbar">
+    <nav class="nav">
+      <a href="index.html">Loja</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="admin.html">Admin</a>
+      <button id="logoutBtn" class="btn-logout">Sair</button>
+    </nav>
+  </header>
 
-<a href="index.html" class="logo">
-VOID ADMIN
-</a>
+  <main class="admin-page">
+    <section class="admin-hero">
+      <h1>Painel Administrativo</h1>
+      <p>Bem-vindo, <strong id="userEmail">carregando...</strong></p>
+    </section>
 
-<div class="nav-actions">
+    <section class="admin-grid">
+      <div class="admin-card">
+        <h2>Produtos</h2>
+        <p>Gerencie os produtos da loja VOID.</p>
+        <button class="btn-primary">Adicionar produto</button>
+      </div>
 
-<a href="index.html">Loja</a>
+      <div class="admin-card">
+        <h2>Pedidos</h2>
+        <p>Visualize pedidos feitos pelos clientes.</p>
+        <button class="btn-secondary">Ver pedidos</button>
+      </div>
 
-<a href="perfil.html">Perfil</a>
+      <div class="admin-card">
+        <h2>Estoque</h2>
+        <p>Controle tamanhos, quantidades e disponibilidade.</p>
+        <button class="btn-secondary">Gerenciar estoque</button>
+      </div>
+    </section>
+  </main>
 
-</div>
-
-</header>
-
-<section class="profile-page">
-
-<div class="profile-card">
-
-<h1>Painel Admin</h1>
-
-<p>Gerencie produtos e pedidos</p>
-
-</div>
-
-<div class="profile-content">
-
-<div class="profile-box">
-
-<h2>Produtos</h2>
-
-<p>24 produtos cadastrados</p>
-
-<button class="profile-btn">
-Adicionar Produto
-</button>
-
-</div>
-
-<div class="profile-box">
-
-<h2>Pedidos</h2>
-
-<p>3 pedidos pendentes</p>
-
-<button class="profile-btn">
-Ver Pedidos
-</button>
-
-</div>
-
-<div class="profile-box">
-
-<h2>Clientes</h2>
-
-<p>57 usuários registrados</p>
-
-<button class="profile-btn">
-Ver Clientes
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<script src="app.js"></script>
-
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
