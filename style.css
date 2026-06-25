@@ -990,3 +990,28 @@ padding:30px;
 
 }
 ```
+```css
+.favorites-page{
+
+padding:80px;
+
+}
+
+.favorites-page h1{
+
+font-size:48px;
+
+margin-bottom:40px;
+
+}
+
+@media(max-width:1000px){
+
+.favorites-page{
+
+padding:30px;
+
+}
+
+}
+```
