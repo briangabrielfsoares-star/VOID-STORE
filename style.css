@@ -1275,3 +1275,40 @@ background:#1b1b1f;
 
 }
 ```
+```css
+.nav-actions a{
+
+text-decoration:none;
+color:white;
+
+background:#141416;
+
+border:1px solid #232327;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+transition:.3s;
+
+}
+
+.nav-actions a:hover{
+
+background:#1b1b1f;
+
+}
+
+.logo{
+
+text-decoration:none;
+color:white;
+
+font-size:32px;
+
+font-weight:800;
+
+letter-spacing:5px;
+
+}
+```
