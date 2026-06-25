@@ -34,31 +34,9 @@ VOID
 
 <h1>Seu Carrinho</h1>
 
-<div class="cart-item">
+<div id="cart-container">
 
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500">
-
-<div>
-
-<h3>Nike Air Force 1</h3>
-<p>Tamanho 41</p>
-<span>R$ 699,90</span>
-
-</div>
-
-</div>
-
-<div class="cart-item">
-
-<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500">
-
-<div>
-
-<h3>Moletom Premium</h3>
-<p>Tamanho G</p>
-<span>R$ 249,90</span>
-
-</div>
+<p>Nenhum produto no carrinho.</p>
 
 </div>
 
@@ -69,8 +47,8 @@ VOID
 <h2>Resumo</h2>
 
 <div class="summary-row">
-<span>Subtotal</span>
-<span>R$ 949,80</span>
+<span>Itens</span>
+<span id="cart-count">0</span>
 </div>
 
 <div class="summary-row">
@@ -80,7 +58,7 @@ VOID
 
 <div class="summary-row total">
 <span>Total</span>
-<span>R$ 949,80</span>
+<span id="cart-total">R$ 0,00</span>
 </div>
 
 <a href="checkout.html">
@@ -92,6 +70,85 @@ Finalizar Compra
 </div>
 
 </section>
+
+<script>
+
+const carrinho =
+JSON.parse(localStorage.getItem("voidCarrinho")) || [];
+
+const container =
+document.getElementById("cart-container");
+
+const totalElement =
+document.getElementById("cart-total");
+
+const countElement =
+document.getElementById("cart-count");
+
+if(carrinho.length > 0){
+
+container.innerHTML = "";
+
+let total = 0;
+
+carrinho.forEach((produto,index)=>{
+
+total += Number(produto.preco);
+
+container.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${produto.imagem}">
+
+<div>
+
+<h3>${produto.nome}</h3>
+
+<span>
+R$ ${Number(produto.preco).toFixed(2)}
+</span>
+
+<br><br>
+
+<button onclick="removerProduto(${index})">
+
+Remover
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+countElement.innerText = carrinho.length;
+
+totalElement.innerText =
+`R$ ${total.toFixed(2)}`;
+
+}
+
+function removerProduto(index){
+
+const carrinho =
+JSON.parse(localStorage.getItem("voidCarrinho")) || [];
+
+carrinho.splice(index,1);
+
+localStorage.setItem(
+"voidCarrinho",
+JSON.stringify(carrinho)
+);
+
+location.reload();
+
+}
+
+</script>
 
 <script src="app.js"></script>
 
