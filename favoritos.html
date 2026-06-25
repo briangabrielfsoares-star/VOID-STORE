@@ -22,8 +22,11 @@ VOID
 </div>
 
 <div class="nav-actions">
+
 <a href="carrinho.html">Carrinho</a>
+
 <a href="perfil.html">Conta</a>
+
 </div>
 
 </header>
@@ -32,32 +35,98 @@ VOID
 
 <h1>Seus Favoritos</h1>
 
-<div class="product-grid">
+<div id="favorites-container" class="product-grid">
 
-<div class="product">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800">
-<h3>Nike Air Force 1</h3>
-<span>R$699,90</span>
-<button class="buy-btn">Adicionar ao Carrinho</button>
-</div>
-
-<div class="product">
-<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800">
-<h3>Moletom Premium</h3>
-<span>R$249,90</span>
-<button class="buy-btn">Adicionar ao Carrinho</button>
-</div>
-
-<div class="product">
-<img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800">
-<h3>Calça Cargo</h3>
-<span>R$229,90</span>
-<button class="buy-btn">Adicionar ao Carrinho</button>
-</div>
+<p>Nenhum favorito encontrado.</p>
 
 </div>
 
 </section>
+
+<script>
+
+const favoritos =
+JSON.parse(localStorage.getItem("voidFavoritos")) || [];
+
+const container =
+document.getElementById("favorites-container");
+
+if(favoritos.length > 0){
+
+container.innerHTML = "";
+
+favoritos.forEach((produto,index)=>{
+
+container.innerHTML += `
+
+<div class="product">
+
+<img src="${produto.imagem}">
+
+<h3>${produto.nome}</h3>
+
+<span>
+R$ ${Number(produto.preco).toFixed(2)}
+</span>
+
+<button onclick="adicionarCarrinho(${index})">
+
+Adicionar ao Carrinho
+
+</button>
+
+<br><br>
+
+<button onclick="removerFavorito(${index})">
+
+Remover
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function adicionarCarrinho(index){
+
+const favoritos =
+JSON.parse(localStorage.getItem("voidFavoritos")) || [];
+
+const carrinho =
+JSON.parse(localStorage.getItem("voidCarrinho")) || [];
+
+carrinho.push(favoritos[index]);
+
+localStorage.setItem(
+"voidCarrinho",
+JSON.stringify(carrinho)
+);
+
+alert("Produto adicionado ao carrinho!");
+
+}
+
+function removerFavorito(index){
+
+const favoritos =
+JSON.parse(localStorage.getItem("voidFavoritos")) || [];
+
+favoritos.splice(index,1);
+
+localStorage.setItem(
+"voidFavoritos",
+JSON.stringify(favoritos)
+);
+
+location.reload();
+
+}
+
+</script>
 
 <script src="app.js"></script>
 
